@@ -22,17 +22,17 @@ import org.eclipse.jface.viewers.ViewerCell
  * @author Ralf Ebert <info@ralfebert.de>
  */
 trait CellFormatter[B] {
-	def formatCell(cell: ViewerCell, value: B)
+  def formatCell(cell: ViewerCell, value: B)
 }
 
 object CellFormatter {
-	def apply[B]: CellFormatter[B] = apply(_.toString)
+  def apply[B]: CellFormatter[B] = apply(_.toString)
 
-	def apply[B](f: B => String): CellFormatter[B] = new CellFormatter[B] {
-		def formatCell(cell: ViewerCell, value: B) {
-			cell.setText(f(value))
-		}
-	}
+  def apply[B](f: B => String): CellFormatter[B] = new CellFormatter[B] {
+    def formatCell(cell: ViewerCell, value: B) {
+      cell.setText(f(value))
+    }
+  }
 
-	implicit def cellFormatter[B](f: B => String): CellFormatter[B] = apply(f)
+  implicit def cellFormatter[B](f: B => String): CellFormatter[B] = apply(f)
 }
