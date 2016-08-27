@@ -1,5 +1,4 @@
-/**
- * *****************************************************************************
+/*******************************************************************************
  * Copyright (c) 2009 David Orme and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,8 +7,7 @@
  *
  * Contributors:
  *     David Orme - initial API and implementation
- * *****************************************************************************
- */
+ *******************************************************************************/
 package pl.writeonly.xscalawt
 
 import org.eclipse.swt.widgets._
@@ -22,35 +20,25 @@ import org.eclipse.jface.layout._
  */
 object XScalaWTAPI {
   // Start with any Widget and add children from there...
-
-  class WidgetX[W](w: W) {
-    def apply(setups: (W => Any)*): W = {
-      //println("apply(setups)")
-      setupAndReturn(w, setups: _*)
+  
+  class WidgetX[W](w : W) {
+    def apply(setups : (W => Any)*) : W = {
+      setupAndReturn(w, setups : _*)
     }
-    def contains(setups: (W => Any)*): W = {
-      setupAndReturn(w, setups: _*)
-    }
-    
-    def setID(id: Symbol) {
-      //println("  setID " + id)
-      w match {
-        case w: Widget => w.setData("WIDGET_ID", id)
-        case _ => sys.error("can only set ID on widgets !")
-      }
+    def contains(setups : (W => Any)*) : W = {
+      setupAndReturn(w, setups : _*)
     }
   }
-
+    
   /**
    * def setup[T].  Set up a new control and call all of its setup functions.
-   *
+   * 
    * T is the control class
    * @param control the SWT Control
    * @param setups A vararg list of setup functions of the type (T => Any)
-   * @return T the T that was set up
+   * @returns T the T that was set up
    */
-  def setupAndReturn[T](control: T, setups: (T => Any)*): T = {
-    //println("setupAndReturn control " + control)
+  def setupAndReturn[T](control : T, setups:(T => Any)*) : T = {
     setups.foreach(setup => setup(control))
 
     if (control.isInstanceOf[Composite]) {
@@ -66,5 +54,5 @@ object XScalaWTAPI {
     control
   }
 
-  def ignore[T]: T => Unit = (t: T) => {}
+  def ignore[T]: T => Unit = (t: T) => {}  
 }

@@ -7,13 +7,13 @@ import scala.collection.GenTraversableOnce
  */
 trait ProviderImplicits[Element <: AnyRef] {
   protected implicit def castElement(x: AnyRef) = x.asInstanceOf[Element]
-
-  protected implicit def upcastArray(array: Array[Element]) =
+  
+  protected implicit def upcastArray(array: Array[Element]) = 
     array.asInstanceOf[Array[AnyRef]]
-
-  protected implicit def javaListToArray(list: java.util.List[Element]) =
+  
+  protected implicit def javaListToArray(list: java.util.List[Element]) = 
     list.toArray
-
-  protected implicit def traversableToArray(seq: GenTraversableOnce[Element]) =
+  
+  protected implicit def traversableToArray(seq: GenTraversableOnce[Element]) = 
     seq.toArray[AnyRef]
 }
