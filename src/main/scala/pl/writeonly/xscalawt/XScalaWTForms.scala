@@ -9,15 +9,20 @@
  *     David Orme - initial API and implementation
  *******************************************************************************/
 package pl.writeonly.xscalawt
+
+import org.eclipse.swt.widgets.Widget
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.layout._
 import org.eclipse.swt.SWT
 import org.eclipse.swt.graphics._
+
 import XScalaWTAPI._
-import XScalaWTAPIimport XScalaWTAPI._
+
 import java.util.Iterator
+
 import XScalaWTAPI._
-import pl.writeonly.xscalawt.XScalaWTAPIScalaWTForms {
+
+object XScalaWTForms {
   class CompositeFillHorizontal(parent: Composite, style: Int) extends Composite(parent, style) {
     override def computeSize(wHint : Int, hHint : Int, changed: Boolean) : Point = {
       val result = super.computeSize(wHint, hHint, changed)

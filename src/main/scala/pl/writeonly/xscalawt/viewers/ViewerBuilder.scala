@@ -39,7 +39,6 @@ abstract class ViewerBuilder[A](parent: Composite, style: Int) {
   
   def sortSelectionListener: SelectionListener
 }
-
 class TableViewerBuilder[A](parent: Composite, style: Int, useHashLookup: Boolean = true, headerVisible: Boolean = true, linesVisible: Boolean = true) extends ViewerBuilder[A](parent, style) {
   val viewer: TableViewer = new TableViewer(composite, style)
   val table = viewer.getTable

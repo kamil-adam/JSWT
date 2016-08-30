@@ -43,11 +43,11 @@ import org.eclipse.swt.events.SelectionEvent
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.SWT
 import XScalaWTAPI._
-import org.eclipse.jface.viewers.{<none> => _*}
+import pl.writeonly.xscalawt.viewers.TableViewerBuilder
+import pl.writeonly.xscalawt.viewers.TreeViewerBuilder
 
 object XJFace {
-  implicit def viewer2XScalaWT[W <: Viewer](viimport pl.writeonly.xscalawt.XScalaWTAPI
-ewer: W) = new WidgetX[W](viewer)
+  implicit def viewer2XScalaWT[W <: Viewer](viewer: W) = new WidgetX[W](viewer)
   implicit def viewerColumn2XScalaWT[W <: ViewerColumn](viewerColumn: W) = new WidgetX[W](viewerColumn)
 
   def listViewer(setups: (ListViewer => Any)*) = (parent: Composite) =>

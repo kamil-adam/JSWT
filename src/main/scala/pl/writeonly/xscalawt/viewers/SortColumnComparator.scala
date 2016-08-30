@@ -46,5 +46,5 @@ private[viewers] class SortColumnComparator extends ViewerComparator {
 }
 
 private[viewers] object SortColumnComparator {
-  val SORT_BY = "pl.writeonly.xscalawt.viewers.sort_by"
+  val SORT_BY = "pl.writeonly.viewers.sort_by"
 }

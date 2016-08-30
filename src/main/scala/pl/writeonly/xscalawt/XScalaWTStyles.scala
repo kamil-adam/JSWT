@@ -13,7 +13,7 @@ package pl.writeonly.xscalawt
 import reflect.ClassManifest
 import org.eclipse.swt.widgets.Widget
 import org.eclipse.swt.widgets.Composite
-import pl.writeonly.xscalawt.XScalaWTStyles.{<none> => _*}
+import org.eclipse.swt.widgets.Display
 
 object XScalaWTStyles {
 
