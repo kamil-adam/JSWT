@@ -32,7 +32,6 @@ import org.eclipse.jface.viewers.OpenEvent
 import org.eclipse.jface.viewers.SelectionChangedEvent
 import org.eclipse.jface.viewers.StructuredViewer
 import org.eclipse.jface.viewers.TableViewer
-import org.eclipse.jface.viewers.CheckboxTableViewer
 import org.eclipse.jface.viewers.TableViewerColumn
 import org.eclipse.jface.viewers.TreeExpansionEvent
 import org.eclipse.jface.viewers.TreeViewer
@@ -44,44 +43,12 @@ import org.eclipse.swt.events.SelectionEvent
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.SWT
 import XScalaWTAPI._
-import org.ozb.xscalawt.viewers.TableViewerBuilder
-import org.ozb.xscalawt.viewers.CheckboxTableViewerBuilder
-import org.ozb.xscalawt.viewers.TreeViewerBuilder
-import org.eclipse.jface.action.Action
-import org.eclipse.jface.action.IMenuListener
-import org.eclipse.jface.action.IMenuManager
-import org.eclipse.swt.graphics.Image
-import org.eclipse.jface.resource.ImageDescriptor
-import org.eclipse.jface.action.ToolBarManager
-import org.eclipse.swt.widgets.ToolBar
-import org.eclipse.jface.action.IAction
-import org.ozb.xscalawt.XScalaWT.toolBar
-import org.ozb.xscalawt.XScalaWT.toolBar$
+import com.coconut_palm_software.xscalawt.viewers.TableViewerBuilder
+import com.coconut_palm_software.xscalawt.viewers.TreeViewerBuilder
 
 object XJFace {
   implicit def viewer2XScalaWT[W <: Viewer](viewer: W) = new WidgetX[W](viewer)
   implicit def viewerColumn2XScalaWT[W <: ViewerColumn](viewerColumn: W) = new WidgetX[W](viewerColumn)
-
-  class ExtAction(runFunc: => Unit) extends Action {
-    override def run() = runFunc
-    def setImage(img: Image) = setImageDescriptor(ImageDescriptor.createFromImage(img))
-  }
-  
-  def action(setups: (ExtAction => Any)*)(runFunc: => Unit) = {
-    setupAndReturn(new ExtAction(runFunc), setups: _*)
-  }
-
-  def toolBarManager$[A <: IAction](style: Int = SWT.NONE)(tbmSetups: (ToolBarManager => Any)*)(setups: (ToolBar => Any)*)(actions: A*) = { (parent: Composite) =>
-    val tb = toolBar$(style)(setups: _*)(parent)
-    val toolbarMan = new ToolBarManager(tb)
-    tbmSetups.foreach(_(toolbarMan))
-    actions.foreach(toolbarMan.add(_))
-    toolbarMan.update(true)
-    toolbarMan
-  }
-    
-  def toolBarManager[A <: IAction](tbmSetups: (ToolBarManager => Any)*)(setups: (ToolBar => Any)*)(actions: A*) = 
-      toolBarManager$()(tbmSetups: _*)(setups: _*)(actions: _*)
 
   def listViewer(setups: (ListViewer => Any)*) = (parent: Composite) =>
     setupAndReturn(new ListViewer(parent, SWT.BORDER), setups: _*)
@@ -101,45 +68,20 @@ object XJFace {
   def treeViewerColumn(setups: (TreeViewerColumn => Any)*) = (parent: TreeViewer) =>
     setupAndReturn(new TreeViewerColumn(parent, SWT.LEFT), setups: _*)
 
-  
-  def tableViewerBuilder$[A](style: Int = SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER)
-      (setups: (TableViewerBuilder[A] => Any)*)(viewerSetups: (TableViewer => Any)*) = (parent: Composite) => {
-    val builder = setupAndReturn(new TableViewerBuilder[A](parent, style), setups: _*)
-    val viewer = builder.viewer
-    viewerSetups.foreach(_(viewer))
-    builder
-  }
-  
-  def tableViewerBuilder[A](setups: (TableViewerBuilder[A] => Any)*)(viewerSetups: (TableViewer => Any)*) = tableViewerBuilder$()(setups: _*)(viewerSetups: _*)
-
-  def checkboxTableViewerBuilder$[A](style: Int = SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER)
-      (setups: (CheckboxTableViewerBuilder[A] => Any)*)(viewerSetups: (CheckboxTableViewer => Any)*) = (parent: Composite) => {
-    val builder = setupAndReturn(new CheckboxTableViewerBuilder[A](parent, style), setups: _*)
+  def tableViewerBuilder[A](setups: (TableViewerBuilder[A] => Any)*)(viewerSetups: (TableViewer => Any)*) = (parent: Composite) => {
+    val builder = setupAndReturn(new TableViewerBuilder[A](parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER), setups: _*)
     val viewer = builder.viewer
     viewerSetups.foreach(_(viewer))
     builder
   }
 
-  def treeViewerBuilder$[A](style: Int = SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER)
-      (setups: (TreeViewerBuilder[A] => Any)*)(viewerSetups: (TreeViewer => Any)*) = (parent: Composite) => {
-    val builder = setupAndReturn(new TreeViewerBuilder[A](parent, style), setups: _*)
+  def treeViewerBuilder[A](setups: (TreeViewerBuilder[A] => Any)*)(viewerSetups: (TreeViewer => Any)*) = (parent: Composite) => {
+    val builder = setupAndReturn(new TreeViewerBuilder[A](parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER), setups: _*)
     val viewer = builder.viewer
     viewerSetups.foreach(_(viewer))
     builder
   }
-  
-  def treeViewerBuilder[A](setups: (TreeViewerBuilder[A] => Any)*)(viewerSetups: (TreeViewer => Any)*) = treeViewerBuilder$()(setups: _*)(viewerSetups: _*)
 
-//  private type AddMenuListener = { def addMenuListener(l: IMenuListener) }
-//  
-//  def addMenuListener(l: IMenuListener) =
-//    (subject: AddMenuListener) => subject.addMenuListener(l)
-  
-  implicit def menuListener(func: IMenuManager => Any): IMenuListener =
-    new IMenuListener {
-      def menuAboutToShow(m: IMenuManager) { func(m) }
-    }
-  
   def addSelectionChangedListener(l: ISelectionChangedListener) =
     (subject: ISelectionProvider) => subject.addSelectionChangedListener(l)
 

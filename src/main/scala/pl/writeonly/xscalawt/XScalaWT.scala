@@ -22,8 +22,15 @@ import org.eclipse.swt.custom._
 import org.eclipse.swt.layout._
 import org.eclipse.swt.SWT
 import org.eclipse.jface.layout.GridDataFactory
-
 import XScalaWTAPI._
+import pl.writeonly.xscalawt.XScalaWTAPIimport java.util.concurrent.CountDownLatch
+import org.eclipse.swt.browser.{<none> => _*}
+import org.eclipse.swt.custom.{<none> => _*}
+import org.eclipse.swt.layout.{<none> => _*}
+import org.eclipse.swt.widgets.{<none> => _*}
+import org.eclipse.swt.widgets.Composite
+import scala.parallel.Future
+import scala.util.control.Exception.allCatch
 
 object XScalaWT {
   /**
@@ -50,30 +57,20 @@ object XScalaWT {
     setupAndReturn(new Browser(parent, SWT.NONE), setups: _*)
   }
 
-  def button$(style: Int = SWT.PUSH)(setups: (Button => Any)*) = { (parent: Composite) =>
-    setupAndReturn(new Button(parent, style), setups: _*)
+  def button(setups: (Button => Any)*) = { (parent: Composite) =>
+    setupAndReturn(new Button(parent, SWT.PUSH), setups: _*)
   }
 
-  def button(setups: (Button => Any)*) = button$()(setups: _*)
-
-  def checkbox(setups: (Button => Any)*) = { (parent: Composite) =>
-    setupAndReturn(new Button(parent, SWT.CHECK), setups: _*)
-  }
-  
-  def radioButton(setups: (Button => Any)*) = { (parent: Composite) =>
-    setupAndReturn(new Button(parent, SWT.RADIO), setups: _*)
-  }
-  
   def cBanner(setups: (CBanner => Any)*) = { (parent: Composite) =>
     setupAndReturn(new CBanner(parent, SWT.NONE), setups: _*)
   }
 
-//  def cCombo(setups:(CCombo => Any)*) = { (parent : Composite) =>
-//    setupAndReturn(new CCombo(parent, SWT.BORDER | SWT.FLAT), setups : _*)
-//  }
+  //  def cCombo(setups:(CCombo => Any)*) = { (parent : Composite) =>
+  //    setup(new CCombo(parent, SWT.BORDER), setups : _*)
+  //  }
 
   def combo(setups: (Combo => Any)*) = { (parent: Composite) =>
-    setupAndReturn(new Combo(parent, SWT.SINGLE | SWT.BORDER), setups: _*)
+    setupAndReturn(new Combo(parent, SWT.BORDER), setups: _*)
   }
 
   def coolBar(setups: (CoolBar => Any)*) = { (parent: Composite) =>
@@ -91,11 +88,9 @@ object XScalaWT {
     composite
   }
 
-  def cTabFolder$(style: Int = SWT.BORDER | SWT.FLAT)(setups: (CTabFolder => Any)*) = { (parent: Composite) =>
-    setupAndReturn(new CTabFolder(parent, style), setups: _*)
+  def cTabFolder(setups: (CTabFolder => Any)*) = { (parent: Composite) =>
+    setupAndReturn(new CTabFolder(parent, SWT.NONE), setups: _*)
   }
-  
-  def cTabFolder(setups: (CTabFolder => Any)*) = cTabFolder$()(setups: _*)
 
   def dateTime(setups: (DateTime => Any)*) = { (parent: Composite) =>
     setupAndReturn(new DateTime(parent, SWT.BORDER), setups: _*)
@@ -136,14 +131,6 @@ object XScalaWT {
     setupAndReturn(new List(parent, SWT.BORDER), setups: _*)
   }
 
-  def menu(setups: (Menu => Any)*) = { (parent: Composite) =>
-    val parent2 = parent match {
-      case shell: Shell => shell
-      case c: Composite => c.getShell()
-    }
-    setupAndReturn(new Menu(parent2, SWT.POP_UP), setups: _*)
-  }
-  
   def progressBar(setups: (ProgressBar => Any)*) = { (parent: Composite) =>
     setupAndReturn(new ProgressBar(parent, SWT.NONE), setups: _*)
   }
@@ -152,10 +139,6 @@ object XScalaWT {
     setupAndReturn(new SashForm(parent, SWT.NONE), setups: _*)
   }
 
-  def sashFormVertical(setups: (SashForm => Any)*) = { (parent: Composite) =>
-    setupAndReturn(new SashForm(parent, SWT.VERTICAL), setups: _*)
-  }
-  
   def scaleHorizontal(setups: (Scale => Any)*) = { (parent: Composite) =>
     setupAndReturn(new Scale(parent, SWT.HORIZONTAL), setups: _*)
   }
@@ -229,11 +212,9 @@ object XScalaWT {
     setupAndReturn(new Slider(parent, SWT.VERTICAL), setups: _*)
   }
 
-  def styledText$(style: Int = SWT.NONE)(setups:(StyledText => Any)*) = { (parent : Composite) =>
-    setupAndReturn(new StyledText(parent, style), setups : _*)
-  }
-  
-  def styledText(setups:(StyledText => Any)*) = styledText$()(setups: _*)
+  //  def styledText(setups:(StyledText => Any)*) = { (parent : Composite) =>
+  //    setup(new StyledText(parent, SWT.NONE), setups : _*)
+  //  }
 
   def tabFolder(setups: (TabFolder => Any)*) = { (parent: Composite) =>
     setupAndReturn(new TabFolder(parent, SWT.NONE), setups: _*)
@@ -247,23 +228,17 @@ object XScalaWT {
   //    setup(new TableTree(parent, SWT.BORDER), setups : _*)
   //  }
 
-  def text$(style: Int = SWT.BORDER)(setups: (Text => Any)*)(parent: Composite) = {
-    setupAndReturn(new Text(parent, style), setups: _*)
-  }
-  
-  def text(setups: (Text => Any)*)(parent: Composite) = text$(SWT.BORDER)(setups: _*)(parent)
-
-  def textPasswd(setups: (Text => Any)*)(parent: Composite) = text$(SWT.BORDER | SWT.PASSWORD)(setups: _*)(parent) 
-
-  def toolBar$(style: Int = SWT.NONE)(setups: (ToolBar => Any)*) = { (parent: Composite) =>
-    setupAndReturn(new ToolBar(parent, style), setups: _*)
+  def text(setups: (Text => Any)*)(parent: Composite) = {
+    setupAndReturn(new Text(parent, SWT.BORDER), setups: _*)
   }
 
-  def toolBar(setups: (ToolBar => Any)*) = toolBar$()(setups: _*)
-    
-//  def toolBar(setups: (ToolBar => Any)*) = { (parent: Composite) =>
-//    setupAndReturn(new ToolBar(parent, SWT.NONE), setups: _*)
-//  }
+  def textPasswd(setups: (Text => Any)*)(parent: Composite) = {
+    setupAndReturn(new Text(parent, SWT.BORDER | SWT.PASSWORD), setups: _*)
+  }
+
+  def toolBar(setups: (ToolBar => Any)*) = { (parent: Composite) =>
+    setupAndReturn(new ToolBar(parent, SWT.NONE), setups: _*)
+  }
 
   def tree(setups: (Tree => Any)*) = { (parent: Composite) =>
     setupAndReturn(new Tree(parent, SWT.BORDER), setups: _*)
@@ -279,31 +254,12 @@ object XScalaWT {
 
   // Items here
 
-  def menuItem(setups: (MenuItem => Any)*) = { (menu: Menu) =>
-    setupAndReturn(new MenuItem(menu, SWT.PUSH), setups: _*)
-  }
-  
   def tabItem(setups: (TabItem => Any)*) = { (parent: Control) =>
     val tabItem = new TabItem(parent.getParent().asInstanceOf[TabFolder], SWT.NONE)
     tabItem.setControl(parent)
     setups.foreach(setup => setup(tabItem))
     tabItem
   }
-  
-  def cTabItem(setups: (CTabItem => Any)*) = { (parent: Control) =>
-    val cTabItem = new CTabItem(parent.getParent().asInstanceOf[CTabFolder], SWT.NONE)
-    setups.foreach(setup => setup(cTabItem))
-    cTabItem.setControl(parent)
-    cTabItem
-  }
-
-  def toolItem$(style: Int = SWT.PUSH)(setups: (ToolItem => Any)*) = { (parent: Control) =>
-    val toolItem = new ToolItem(parent.asInstanceOf[ToolBar], style)
-    setups.foreach(setup => setup(toolItem))
-    toolItem
-  }
-  
-  def toolItem(setups: (ToolItem => Any)*) = toolItem$()(setups: _*) 
 
   def coolItem(setups: (CoolItem => Any)*) = { (parent: Control) =>
     val coolItem = new CoolItem(parent.getParent().asInstanceOf[CoolBar], SWT.NONE)
@@ -326,10 +282,6 @@ object XScalaWT {
 
   // Layouts here
 
-  def stackLayout(setups: (StackLayout => Any)*) = (c: Composite) => {
-    c.setLayout(setupAndReturn(new StackLayout, setups: _*))
-  }
-  
   def fillLayout(setups: (FillLayout => Any)*) = (c: Composite) => {
     c.setLayout(setupAndReturn(new FillLayout, setups: _*))
   }
@@ -364,13 +316,13 @@ object XScalaWT {
 
   def defaultGridData = (c: Control) => GridDataFactory.defaultsFor(c).applyTo(c)
 
-  def modifiedDefaultGridData(setup: GridDataFactory => GridDataFactory) =
-    (c: Control) => setup(GridDataFactory.defaultsFor(c)).applyTo(c)
+  def modifiedDefaultGridData(setups: GridDataFactory => GridDataFactory*) =
+    (c: Control) => setups.foldRight(GridDataFactory.defaultsFor(c))(_(_)).applyTo(c)
 
   def fillGridData = (c: Control) => GridDataFactory.fillDefaults().applyTo(c)
 
-  def modifiedFillGridData(setup: GridDataFactory => GridDataFactory) =
-    (c: Control) => setup(GridDataFactory.fillDefaults()).applyTo(c)
+  def modifiedFillGridData(setups: GridDataFactory => GridDataFactory*) =
+    (c: Control) => setups.foldRight(GridDataFactory.fillDefaults())(_(_)).applyTo(c)
 
   //
   // Declarative setters here
@@ -383,8 +335,6 @@ object XScalaWT {
 
   implicit def string2setText[T <: HasSetText](txt: String): T => Any = Assignments.caption_=(txt)
 
-  implicit def symbol2setID[T <: Widget](id: Symbol): T => Any = (subject: T) => subject.setID(id)
-
   /**
    * Import Assignments._ if you want to be able to use lines like "layout = new FillLayout()", "minimum = 10", etc.
    * in your widget setup lines, instead of "_.setLayout(new FillLayout())", "_.setMinimum(10)", etc.
@@ -393,17 +343,13 @@ object XScalaWT {
    */
   object Assignments {
 
-    private def nothing: Nothing = sys.error("this method is not meant to be called")
+    private def nothing: Nothing = error("this method is not meant to be called")
 
     // cannot use text and text_= as they are already builders for the Text widget
     def caption(implicit ev: Nothing) = nothing
     def caption_=[T <: HasSetText](txt: String) =
       (subject: T) => subject.setText(txt)
 
-    def id(implicit ev: Nothing) = nothing
-    def id_=[T <: { def setId(id: String)}](id: String) = 
-      (subject: T) => subject.setId(id) 
-      
     def image(implicit ev: Nothing) = nothing
     def image_=[T <: HasSetImage](image: Image) =
       (subject: T) => subject.setImage(image)
@@ -426,10 +372,7 @@ object XScalaWT {
 
     def layoutData(implicit ev: Nothing) = nothing
     def layoutData_=[T <: { def setLayoutData(data: Object) }](data: Object) =
-      (subject: T) => {
-        //println("  setLayoutData for [%s] [%s]" format (subject, data))
-        subject.setLayoutData(data)
-      }
+      (subject: T) => subject.setLayoutData(data)
 
     def minimum(implicit ev: Nothing) = nothing
     def minimum_=[T <: { def setMinimum(value: Int) }](value: Int) =
@@ -442,19 +385,6 @@ object XScalaWT {
     def selection(implicit ev: Nothing) = nothing
     def selection_=[T <: { def setSelection(value: Int) }](value: Int) =
       (subject: T) => subject.setSelection(value)
-    
-    def tooltip(implicit ev: Nothing) = nothing  
-    def tooltip_=[T <: { def setToolTipText(value: String) }](value: String) =
-      (subject: T) => subject.setToolTipText(value)
-      
-    def topRight(implicit ev: Nothing) = nothing
-//    def topRight_=[T <: { def setTopRight(control: Control) }](control: Control) = {
-//      (subject: T) => subject.setTopRight(control)  
-//    }
-    /* Note: if you use a CTabFolder, the tab height must big enough to display the control (see DefaultTabFolder.computeTabHeight) */
-    def topRight_=[T <: { def setTopRight(control: Control) }](f: Composite => Control) = {
-      (subject: T) => subject.setTopRight(f(subject.asInstanceOf[Composite]))  
-    }
   }
 
   case class PimpGetText[T <: { def getText(): String; def setText(text: String) }](control: T) {
@@ -969,14 +899,34 @@ object XScalaWT {
     }
   }
 
-  import scala.concurrent.Future
-  import scala.concurrent.Promise
-  import scala.util.Try
+  import scala.parallel.Future // Or java.util.concurrent.Future?
   def asyncEvalInUIThread[A](f: => A)(implicit d: Display): Future[A] = {
-    val p = Promise[A]()
-    d.asyncExec {
-      p.complete(Try(f))
+    val future = new Future[A] {
+      import java.util.concurrent.CountDownLatch
+
+      private val latch = new CountDownLatch(1)
+      @volatile private var result: Option[Either[Throwable, A]] = None
+
+      def isDone = result.isDefined
+
+      def apply() = {
+        if (!isDone) { latch.await() }
+
+        result.get match {
+          case Left(e) => throw e
+          case Right(res) => res
+        }
+      }
+
+      def begin() {
+        d.asyncExec {
+          result = Some(allCatch.either(f))
+          latch.countDown()
+        }
+      }
     }
-    p.future
+
+    future.begin()
+    future
   }
 }
