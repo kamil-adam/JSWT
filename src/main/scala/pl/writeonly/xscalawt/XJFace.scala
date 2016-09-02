@@ -1,4 +1,4 @@
-package com.coconut_palm_software.xscalawt
+package pl.writeonly.xscalawt
 
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.jface.dialogs.IPageChangedListener
