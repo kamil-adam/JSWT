@@ -9,8 +9,10 @@
  *     David Orme - initial API and implementation
  *******************************************************************************/
 package pl.writeonly.xscalawt
+
+import java.beans.PropertyChangeListener
+
 import org.eclipse.swt.SWT
-import org.ecliimport org.eclipse.swt.SWT
 import org.eclipse.swt.widgets._
 import org.eclipse.core.databinding.observable.value.IObservableValue
 import org.eclipse.core.databinding.beans.BeansObservables
@@ -20,8 +22,8 @@ import org.eclipse.jface.databinding.swt.ISWTObservableValue
 import org.eclipse.core.databinding.DataBindingContext
 import org.eclipse.core.databinding.UpdateValueStrategy
 import org.eclipse.core.databinding.observable.Realm
+
 import XScalaWTAPI._
-import pl.writeonly.xscalawt.XScalaWTAPI => _*}
 
 object XScalaWTBinding {
   val DBC_KEY="DBC_KEY"
