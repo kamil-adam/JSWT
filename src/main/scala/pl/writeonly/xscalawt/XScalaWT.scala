@@ -22,15 +22,8 @@ import org.eclipse.swt.custom._
 import org.eclipse.swt.layout._
 import org.eclipse.swt.SWT
 import org.eclipse.jface.layout.GridDataFactory
+
 import XScalaWTAPI._
-import pl.writeonly.xscalawt.XScalaWTAPIimport java.util.concurrent.CountDownLatch
-import org.eclipse.swt.browser.{<none> => _*}
-import org.eclipse.swt.custom.{<none> => _*}
-import org.eclipse.swt.layout.{<none> => _*}
-import org.eclipse.swt.widgets.{<none> => _*}
-import org.eclipse.swt.widgets.Composite
-import scala.parallel.Future
-import scala.util.control.Exception.allCatch
 
 object XScalaWT {
   /**
