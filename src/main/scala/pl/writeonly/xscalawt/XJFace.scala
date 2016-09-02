@@ -1,4 +1,4 @@
-package pl.writeonly.xscalawt
+package com.coconut_palm_software.xscalawt
 
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.jface.dialogs.IPageChangedListener
@@ -43,8 +43,8 @@ import org.eclipse.swt.events.SelectionEvent
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.SWT
 import XScalaWTAPI._
-import com.coconut_palm_software.xscalawt.viewers.TableViewerBuilder
-import com.coconut_palm_software.xscalawt.viewers.TreeViewerBuilder
+import pl.writeonly.xscalawt.viewers.TableViewerBuilder
+import pl.writeonly.xscalawt.viewers.TreeViewerBuilder
 
 object XJFace {
   implicit def viewer2XScalaWT[W <: Viewer](viewer: W) = new WidgetX[W](viewer)
