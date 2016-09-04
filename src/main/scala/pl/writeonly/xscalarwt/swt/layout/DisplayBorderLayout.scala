@@ -1,4 +1,4 @@
-package pl.writeonly.swt.layout
+package pl.writeonly.xscalarwt.swt.layout
 
 import org.eclipse.swt.widgets.Button
 import org.eclipse.swt.widgets.Display
