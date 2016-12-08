@@ -44,9 +44,9 @@ import org.eclipse.swt.events.SelectionEvent
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.SWT
 import XScalaWTAPI._
-import org.ozb.xscalawt.viewers.TableViewerBuilder
-import org.ozb.xscalawt.viewers.CheckboxTableViewerBuilder
-import org.ozb.xscalawt.viewers.TreeViewerBuilder
+import pl.writeonly.xscalawt.viewers.TableViewerBuilder
+import pl.writeonly.xscalawt.viewers.CheckboxTableViewerBuilder
+import pl.writeonly.xscalawt.viewers.TreeViewerBuilder
 import org.eclipse.jface.action.Action
 import org.eclipse.jface.action.IMenuListener
 import org.eclipse.jface.action.IMenuManager
@@ -55,8 +55,8 @@ import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.jface.action.ToolBarManager
 import org.eclipse.swt.widgets.ToolBar
 import org.eclipse.jface.action.IAction
-import org.ozb.xscalawt.XScalaWT.toolBar
-import org.ozb.xscalawt.XScalaWT.toolBar$
+import pl.writeonly.xscalawt.XScalaWT.toolBar
+import pl.writeonly.xscalawt.XScalaWT.toolBar$
 
 object XJFace {
   implicit def viewer2XScalaWT[W <: Viewer](viewer: W) = new WidgetX[W](viewer)

@@ -1,1 +1,1 @@
-# XScalarWT
+# JSWT
