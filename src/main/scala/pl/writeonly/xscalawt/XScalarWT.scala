@@ -12,7 +12,7 @@ import pl.writeonly.xscalawt._
 import pl.writeonly.xscalawt.XScalaWT._
 import pl.writeonly.xscalawt.XScalaWTAPI._
 import pl.writeonly.xscalawt.viewers.TableViewerBuilder
-import pl.writeonly.swt.layout._
+import pl.writeonly.xscalarwt.swt.layout._
 
 
 
