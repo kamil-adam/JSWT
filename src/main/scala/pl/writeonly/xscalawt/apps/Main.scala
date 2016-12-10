@@ -1,8 +1,8 @@
 package pl.writeonly.xscalawt.apps
 
-import org.ozb.xscalawt.XScalaWT.Assignments._
-import org.ozb.xscalawt.XScalaWT._
-import org.ozb.xscalawt.XScalaWTBinding._
+import pl.writeonly.xscalawt.XScalaWT.Assignments._
+import pl.writeonly.xscalawt.XScalaWT._
+import pl.writeonly.xscalawt.XScalaWTBinding._
 
 import org.eclipse.swt.widgets._
 import org.eclipse.swt.SWT
