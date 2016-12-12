@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.writeonly</groupId>
 
-	<artifactId>XScalarWT</artifactId>
+	<artifactId>JSWT</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
+	<version>1.2-SNAPSHOT</version>
 
 	<repositories>
 		<repository>
@@ -20,10 +20,10 @@
 	</repositories>
 
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
 		<encoding>UTF-8</encoding>
-		<scala.version>2.9.0</scala.version>
+		<scala.version>2.10.0</scala.version>
 	</properties>
 
 	<dependencies>
