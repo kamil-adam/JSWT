@@ -893,6 +893,7 @@ object XScalaWT {
   }
 
   import scala.parallel.Future // Or java.util.concurrent.Future?
+  //import scala.concurrent.Future
   def asyncEvalInUIThread[A](f: => A)(implicit d: Display): Future[A] = {
     val future = new Future[A] {
       import java.util.concurrent.CountDownLatch
