@@ -1,4 +1,4 @@
-package pl.writeonly.xscalawt
+package pl.writeonly.jswt.scaladsl
 
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.jface.dialogs.IPageChangedListener
