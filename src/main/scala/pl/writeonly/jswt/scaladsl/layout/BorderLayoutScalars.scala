@@ -1,4 +1,4 @@
-package pl.writeonly.xscalarwt.swt.layout
+package pl.writeonly.jswt.scaladsl.layout
 
 import org.eclipse.swt.graphics.Point
 import org.eclipse.swt.widgets.Composite

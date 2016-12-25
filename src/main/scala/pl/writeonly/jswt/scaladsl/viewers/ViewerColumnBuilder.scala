@@ -11,7 +11,7 @@
  * Alexey Romanov - generalization and translation to Scala
  * *****************************************************************************
  */
-package pl.writeonly.xscalawt.viewers
+package pl.writeonly.jswt.scaladsl.viewers
 import org.eclipse.jface.viewers.ViewerColumn
 import org.eclipse.jface.viewers.CellEditor
 import org.eclipse.jface.viewers.CellLabelProvider

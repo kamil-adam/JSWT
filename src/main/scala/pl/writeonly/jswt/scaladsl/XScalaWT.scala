@@ -10,7 +10,7 @@
  *     David Orme - initial API and implementation
  * *****************************************************************************
  */
-package pl.writeonly.xscalawt
+package pl.writeonly.jswt.scaladsl
 
 import reflect.ClassManifest
 import java.lang.reflect._

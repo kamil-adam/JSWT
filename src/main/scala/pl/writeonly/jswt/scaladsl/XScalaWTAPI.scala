@@ -8,7 +8,7 @@
  * Contributors:
  *     David Orme - initial API and implementation
  *******************************************************************************/
-package pl.writeonly.xscalawt
+package pl.writeonly.jswt.scaladsl
 
 import org.eclipse.swt.widgets._
 import org.eclipse.swt.layout._

@@ -9,7 +9,7 @@
  * Ralf Ebert - initial API and implementation
  * Alexey Romanov - generalization and translation to Scala 
  *******************************************************************************/
-package pl.writeonly.xscalawt.viewers
+package pl.writeonly.jswt.scaladsl.viewers
 import org.eclipse.jface.viewers.CellLabelProvider
 import org.eclipse.jface.viewers.ViewerCell
 

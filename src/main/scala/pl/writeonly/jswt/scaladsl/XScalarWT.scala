@@ -1,4 +1,4 @@
-package pl.writeonly.xscalawt
+package pl.writeonly.jswt.scaladsl
 import org.eclipse.jface.viewers.CellEditor
 import org.eclipse.jface.viewers.CheckboxCellEditor
 import org.eclipse.jface.viewers.ComboBoxCellEditor
