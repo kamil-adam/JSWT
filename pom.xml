@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>pl.writeonly</groupId>
+	<groupId>pl.writeonly.jswt</groupId>
 
-	<artifactId>JSWT</artifactId>
+	<artifactId>jswt</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1-SNAPSHOT</version>
 
 	<repositories>
 		<repository>
@@ -29,15 +29,76 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>pl.writeonly.sailor</groupId>
-            <artifactId>jface2012</artifactId>
-            <version>0.0.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>org.eclipse.swt</groupId>
 <!-- 			<artifactId>org.eclipse.swt.win32.win32.x86</artifactId> -->
                 <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
 			<version>4.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.swt</groupId>
+			<artifactId>org.eclipse.swt</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.commands</artifactId>
+			<version>3.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.databinding.beans</artifactId>
+			<version>1.2.200</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.databinding.observable</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.databinding.property</artifactId>
+			<version>1.4.100</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.databinding</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.equinox</groupId>
+			<artifactId>org.eclipse.equinox.common</artifactId>
+			<version>3.6.100</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jface</groupId>
+			<artifactId>org.eclipse.jface.databinding</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jface</groupId>
+			<artifactId>org.eclipse.jface.text</artifactId>
+			<version>3.8.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jface</groupId>
+			<artifactId>org.eclipse.jface</artifactId>
+			<version>3.8.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.nebula</groupId>
+			<artifactId>org.eclipse.nebula.widgets.formattedtext</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.nebula</groupId>
+			<artifactId>org.eclipse.nebula.widgets.pgroup</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 	</dependencies>
