@@ -1,4 +1,4 @@
-package pl.writeonly.xscalawt
+package pl.writeonly.jswt.scaladsl
 
 import scala.reflect.ClassManifest
 
